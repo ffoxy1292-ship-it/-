@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حملة تشجير المناطق الداخلية في الجزائر</title>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --pale-green: #e8f5e9;
+            --dark-green: #1b5e20;
+            --accent-color: #8d6e63;
+            --earth-brown: #795548;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--earth-brown), var(--dark-green));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            background-color: var(--pale-green);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e8f5e9"/><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%234caf50" stroke-width="2"/></svg>');
+        }
+        
+        .hero h2 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--light-green);
+        }
+        
+        .section h2 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--pale-green);
+        }
+        
+        .region-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: var(--pale-green);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+        
+        .tab-btn.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        
+        .tab-btn:hover {
+            background-color: var(--light-green);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tree-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tree-card {
+            background-color: var(--pale-green);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tree-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .tree-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tree-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(46,125,50,0.2));
+        }
+        
+        .tree-info {
+            padding: 1.5rem;
+        }
+        
+        .tree-info h3 {
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tree-info p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .benefits-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            color: var(--light-green);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+        
+        .tips {
+            background-color: #fff8e1;
+            border-left: 5px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+        
+        .tips h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .soil-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .soil-card {
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--earth-brown);
+        }
+        
+        .soil-card h4 {
+            color: var(--earth-brown);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta {
+            background: linear-gradient(to right, var(--earth-brown), var(--primary-green));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-green);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tree-grid, .soil-types {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .region-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>حملة تشجير المناطق الداخلية في الجزائر</h1>
+            <p>معًا نحو بيئة داخلية خضراء مستدامة لمستقبل أفضل</p>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>أنسب الأشجار للمناطق الداخلية في الجزائر</h2>
+            <p>اكتشف معنا أفضل أنواع الأشجار التي تتناسب مع التربة والمناخ في المناطق الداخلية للجزائر</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="section">
+            <h2>أهمية التشجير في المناطق الداخلية</h2>
+            <p>تشجير المناطق الداخلية في الجزائر له فوائد متعددة تشمل:</p>
+            <ul class="benefits-list">
+                <li>مكافحة التصحر وزحف الرمال</li>
+                <li>تحسين خصوبة التربة وزيادة المحاصيل الزراعية</li>
+                <li>توفير الظل وخفض درجات الحرارة</li>
+                <li>امتصاص ثاني أكسيد الكربون وتحسين جودة الهواء</li>
+                <li>توفير موائل طبيعية للتنوع البيولوجي</li>
+                <li>تثبيت التربة ومنع الانجراف</li>
+                <li>توفير مصادر دخل إضافية من خلال منتجات الأشجار</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>أنواع التربة في المناطق الداخلية الجزائرية</h2>
+            <p>تتنوع التربة في المناطق الداخلية للجزائر بين عدة أنواع رئيسية:</p>
+            
+            <div class="soil-types">
+                <div class="soil-card">
+                    <h4>التربة الطينية</h4>
+                    <p>توجد في المناطق الشمالية، غنية بالمغذيات وتحتفظ بالماء جيدًا.</p>
+                </div>
+                
+                <div class="soil-card">
+                    <h4>التربة الرملية</h4>
+                    <p>تنتشر في المناطق الصحراوية، فقيرة بالمغذيات وتصريفها سريع.</p>
+                </div>
+                
+                <div class="soil-card">
+                    <h4>التربة الجيرية</h4>
+                    <p>توجد في الهضاب العليا، قلوية وتحتاج لأشجار متكيفة.</p>
+                </div>
+                
+                <div class="soil-card">
+                    <h4>التربة الملحية</h4>
+                    <p>في المناطق المنخفضة، تحتاج لأشجار متحملة للملوحة.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>أشجار المناطق الداخلية حسب المنطقة</h2>
+            
+            <div class="region-tabs">
+                <button class="tab-btn active" data-tab="north">المناطق الشمالية</button>
+                <button class="tab-btn" data-tab="highlands">الهضاب العليا</button>
+                <button class="tab-btn" data-tab="saharan">المناطق الصحراوية</button>
+            </div>
+            
+            <div class="tab-content active" id="north">
+                <h3>أشجار المناطق الشمالية</h3>
+                <p>المناطق الشمالية تتمتع بمناخ متوسطي وتربة خصبة مناسبة للعديد من الأشجار.</p>
+                
+                <div class="tree-grid">
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة الزيتون</div>
+                        <div class="tree-info">
+                            <h3>شجرة الزيتون</h3>
+                            <p>شجرة متوسطة الحجم، معمرة وتتحمل الجفاف، تنتج ثمار الزيتون.</p>
+                            <ul class="benefits-list">
+                                <li>تتحمل الجفاف</li>
+                                <li>مناسبة للتربة الكلسية</li>
+                                <li>إنتاج الزيت والثمار</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة التين</div>
+                        <div class="tree-info">
+                            <h3>شجرة التين</h3>
+                            <p>شجرة متوسطة الحجم، تنتج ثمار التين اللذيذة والمغذية.</p>
+                            <ul class="benefits-list">
+                                <li>تتحمل الجفاف</li>
+                                <li>ثمار مغذية</li>
+                                <li>نمو سريع</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة الكرمة</div>
+                        <div class="tree-info">
+                            <h3>شجرة الكرمة (العنب)</h3>
+                            <p>شجرة متسلقة تنتج العنب، تحتاج إلى دعم للنمو.</p>
+                            <ul class="benefits-list">
+                                <li>إنتاج العنب</li>
+                                <li>ظل كثيف</li>
+                                <li>مناسبة للتعريشات</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="highlands">
+                <h3>أشجار الهضاب العليا</h3>
+                <p>الهضاب العليا تتميز بمناخ قاري وتربة جيرية، تحتاج لأشجار متحملة للبرودة والجفاف.</p>
+                
+                <div class="tree-grid">
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة اللوز</div>
+                        <div class="tree-info">
+                            <h3>شجرة اللوز</h3>
+                            <p>شجرة متوسطة الحجم، تتحمل البرودة والجفاف، تزهر مبكرًا.</p>
+                            <ul class="benefits-list">
+                                <li>تتحمل البرودة</li>
+                                <li>إنتاج اللوز</li>
+                                <li>أزهار جميلة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة المشمش</div>
+                        <div class="tree-info">
+                            <h3>شجرة المشمش</h3>
+                            <p>شجرة متوسطة الحجم، تتحمل البرودة، تنتج ثمار المشمش.</p>
+                            <ul class="benefits-list">
+                                <li>تتحمل البرودة</li>
+                                <li>ثمار لذيذة</li>
+                                <li>أزهار جميلة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة الأرز</div>
+                        <div class="tree-info">
+                            <h3>شجرة الأرز</h3>
+                            <p>شجرة دائمة الخضرة، تتحمل البرودة والتربة الفقيرة.</p>
+                            <ul class="benefits-list">
+                                <li>دائمة الخضرة</li>
+                                <li>تتحمل البرودة</li>
+                                <li>خشب عالي الجودة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="saharan">
+                <h3>أشجار المناطق الصحراوية</h3>
+                <p>المناطق الصحراوية تتميز بمناخ جاف وحار، تحتاج لأشجار شديدة التحمل للجفاف والحرارة.</p>
+                
+                <div class="tree-grid">
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة النخيل</div>
+                        <div class="tree-info">
+                            <h3>شجرة النخيل</h3>
+                            <p>شجرة معمرة تتحمل الجفاف والحرارة العالية، تنتج التمور.</p>
+                            <ul class="benefits-list">
+                                <li>تتحمل الجفاف الشديد</li>
+                                <li>إنتاج التمور</li>
+                                <li>ظل واسع</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة الأكاسيا</div>
+                        <div class="tree-info">
+                            <h3>شجرة الأكاسيا</h3>
+                            <p>شجرة متوسطة الحجم، تتحمل الجفاف والملوحة، جذورها عميقة.</p>
+                            <ul class="benefits-list">
+                                <li>تتحمل الجفاف</li>
+                                <li>جذور عميقة</li>
+                                <li>تثبيت النيتروجين</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-card">
+                        <div class="tree-image">شجرة الطلح</div>
+                        <div class="tree-info">
+                            <h3>شجرة الطلح</h3>
+                            <p>شجرة صحراوية معمرة، تتحمل الظروف القاسية، أوراقها صغيرة.</p>
+                            <ul class="benefits-list">
+                                <li>تتحمل الجفاف الشديد</li>
+                                <li>مناسبة للرعي</li>
+                                <li>تثبيت الكثبان</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>نصائح للزراعة الناجحة في المناطق الداخلية</h2>
+            
+            <div class="tips">
+                <h3>اختيار الأشجار المناسبة</h3>
+                <p>اختر الأشجار المتكيفة مع منطقتك وتربتك وظروفك المناخية.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>تحضير التربة</h3>
+                <p>أضف المواد العضوية لتحسين خصوبة التربة وتهويتها قبل الزراعة.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>الري المنظم</h3>
+                <p>وفر نظام ري منتظم خاصة في السنوات الأولى لضمان نجاح الأشجار.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>الحماية من الرياح</h3>
+                <p>استخدم مصدات الرياح لحماية الأشجار الصغيرة من الرياح القوية.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>التسميد المناسب</h3>
+                <p>استخدم الأسمدة العضوية والمعدنية المناسبة لنوع التربة والشجرة.</p>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <h2>انضم إلى حملتنا لتشجير المناطق الداخلية</h2>
+            <p>سجل معنا وساهم في جعل الجزائر الداخلية أكثر خضرة وخصوبة</p>
+            <a href="#" class="btn">سجل كمتطوع</a>
+            <a href="#" class="btn">تبرع لزراعة شجرة</a>
+            <a href="#" class="btn">اطلب شجرة للزراعة</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>حملة تشجير المناطق الداخلية في الجزائر - معًا نحو بيئة داخلية أفضل</p>
+            <p>© 2023 جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        // تبويبات المناطق
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // إزالة النشاط من جميع الأزهار والمحتويات
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // إضافة النشاط للعناصر المحددة
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+              </html>
