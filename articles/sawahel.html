@@ -11,6 +11,7 @@
             --pale-green: #e8f5e9;
             --dark-green: #1b5e20;
             --accent-color: #ff9800;
+            --ocean-blue: #1976d2;
         }
         
         * {
@@ -33,7 +34,7 @@
         }
         
         header {
-            background: linear-gradient(to right, var(--dark-green), var(--primary-green));
+            background: linear-gradient(135deg, var(--ocean-blue), var(--primary-green));
             color: white;
             padding: 2rem 0;
             text-align: center;
@@ -52,7 +53,7 @@
         }
         
         .hero {
-            background-color: var(--pale-green);
+            background: linear-gradient(135deg, #e3f2fd, var(--pale-green));
             padding: 3rem 0;
             text-align: center;
             margin-bottom: 2rem;
@@ -88,7 +89,7 @@
         
         .tree-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -108,13 +109,9 @@
         
         .tree-image {
             width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-            font-weight: bold;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--light-green);
         }
         
         .tree-info {
@@ -124,6 +121,7 @@
         .tree-info h3 {
             color: var(--dark-green);
             margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
         
         .tree-info p {
@@ -134,6 +132,7 @@
         .benefits-list {
             list-style-type: none;
             padding: 0;
+            margin-bottom: 1rem;
         }
         
         .benefits-list li {
@@ -151,6 +150,19 @@
             right: 0;
         }
         
+        .planting-tips {
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-right: 4px solid var(--ocean-blue);
+        }
+        
+        .planting-tips h4 {
+            color: var(--ocean-blue);
+            margin-bottom: 0.5rem;
+        }
+        
         .tips {
             background-color: #fff8e1;
             border-left: 5px solid var(--accent-color);
@@ -165,7 +177,7 @@
         }
         
         .cta {
-            background: linear-gradient(to right, var(--primary-green), var(--light-green));
+            background: linear-gradient(135deg, var(--ocean-blue), var(--primary-green));
             color: white;
             text-align: center;
             padding: 3rem 2rem;
@@ -254,7 +266,7 @@
             
             <div class="tree-grid">
                 <div class="tree-card">
-                     <a href="https://ibb.co/67pRLm0t"><img src="https://i.ibb.co/hJnRwyFd/jason-leung-SJf-ERh-GS5-F4-unsplash.jpg" alt="jason-leung-SJf-ERh-GS5-F4-unsplash" border="0"></a>
+                    <img src="https://images.unsplash.com/photo-1572888623452-2c68e141f287?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZXVjYWx5cHR1cyUyMHRyZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="شجرة الكينا" class="tree-image">
                     <div class="tree-info">
                         <h3>شجرة الكينا (الأوكالبتوس)</h3>
                         <p>شجرة سريعة النمو تتحمل الملوحة والجفاف، وتصلح للزراعة في المناطق الساحلية.</p>
@@ -263,11 +275,15 @@
                             <li>نمو سريع</li>
                             <li>توفير ظل كثيف</li>
                         </ul>
+                        <div class="planting-tips">
+                            <h4>نصائح الزراعة:</h4>
+                            <p>ازرع في تربة جيدة التصريف، اسقِ بانتظام في السنة الأولى، احمِ من الرياح القوية في البداية.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="tree-card">
-                    <div class="tree-image">صورة شجرة الصنوبر الحلبي</div>
+                    <img src="https://images.unsplash.com/photo-1599156480016-4cb2c497f7f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGluZSUyMHRyZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="شجرة الصنوبر الحلبي" class="tree-image">
                     <div class="tree-info">
                         <h3>شجرة الصنوبر الحلبي</h3>
                         <p>شجرة دائمة الخضرة تتحمل الجفاف والملوحة، وتنمو جيدًا في التربة الساحلية.</p>
@@ -276,11 +292,15 @@
                             <li>دائمة الخضرة</li>
                             <li>جذور عميقة تثبت التربة</li>
                         </ul>
+                        <div class="planting-tips">
+                            <h4>نصائح الزراعة:</h4>
+                            <p>ازرع في تربة جيرية، لا تحتاج ري كثيف بعد النمو، تقليم الفروع السفلية للحفاظ على الشكل.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="tree-card">
-                    <div class="tree-image">صورة شجرة النخيل</div>
+                    <img src="https://images.unsplash.com/photo-1501325084632-86f9978d05ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFsbSUyMHRyZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="شجرة النخيل" class="tree-image">
                     <div class="tree-info">
                         <h3>شجرة النخيل</h3>
                         <p>تعتبر من أفضل الأشجار للمناطق الساحلية لقدرتها العالية على تحمل الملوحة والرياح.</p>
@@ -289,11 +309,15 @@
                             <li>مقاومة للرياح القوية</li>
                             <li>إنتاج التمور</li>
                         </ul>
+                        <div class="planting-tips">
+                            <h4>نصائح الزراعة:</h4>
+                            <p>ازرع في تربة رملية، اسقِ بانتظام خاصة في الصيف، أضف السماد العضوي سنويًا.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="tree-card">
-                    <div class="tree-image">صورة شجرة الأكاسيا</div>
+                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWNhY2lhJTIwdHJlZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="شجرة الأكاسيا" class="tree-image">
                     <div class="tree-info">
                         <h3>شجرة الأكاسيا</h3>
                         <p>شجرة متوسطة الحجم تتحمل الجفاف والملوحة، وتزهر بأزهار صفراء جميلة.</p>
@@ -302,11 +326,15 @@
                             <li>أزهار جميلة</li>
                             <li>تثبيت النيتروجين في التربة</li>
                         </ul>
+                        <div class="planting-tips">
+                            <h4>نصائح الزراعة:</h4>
+                            <p>ازرع في تربة جيدة التصريف، اسقِ باعتدال، تقليم خفيف للحفاظ على الشكل.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="tree-card">
-                    <div class="tree-image">صورة شجرة التمرحنة</div>
+                    <img src="https://images.unsplash.com/photo-1595434091147-74bceeeb4631?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGFtYXJpeCUyMHRyZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="شجرة التمرحنة" class="tree-image">
                     <div class="tree-info">
                         <h3>شجرة التمرحنة</h3>
                         <p>شجرة ساحلية بامتياز، تتحمل الملوحة والرياح القوية، وتوفر ظلاً ممتازاً.</p>
@@ -315,11 +343,15 @@
                             <li>تتحمل الرياح القوية</li>
                             <li>ظل كثيف</li>
                         </ul>
+                        <div class="planting-tips">
+                            <h4>نصائح الزراعة:</h4>
+                            <p>ازرع مباشرة في التربة الساحلية، لا تحتاج ري كثيف، نمو سريع في الظروف المناسبة.</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="tree-card">
-                    <div class="tree-image">صورة شجرة السرو</div>
+                    <img src="https://images.unsplash.com/photo-1612299273043-9c7ddfb52b98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3lwcmVzcyUyMHRyZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="شجرة السرو" class="tree-image">
                     <div class="tree-info">
                         <h3>شجرة السرو</h3>
                         <p>شجرة دائمة الخضرة تتحمل الرياح القوية، وتصلح كحواجز رياح في المناطق الساحلية.</p>
@@ -328,32 +360,41 @@
                             <li>دائمة الخضرة</li>
                             <li>مناسبة كحواجز رياح</li>
                         </ul>
+                        <div class="planting-tips">
+                            <h4>نصائح الزراعة:</h4>
+                            <p>ازرع في صفوف كمصدات رياح، اسقِ بانتظام في البداية، تقليم منتظم للحفاظ على الشكل.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         
         <section class="section">
-            <h2>نصائح للزراعة الناجحة</h2>
+            <h2>نصائح للزراعة الناجحة في المناطق الساحلية</h2>
             
             <div class="tips">
                 <h3>اختيار الموقع المناسب</h3>
-                <p>اختر مواقع بعيدة عن المنشآت الساحلية وتأكد من توفر مصدات الرياح الطبيعية.</p>
+                <p>اختر مواقع بعيدة عن المنشآت الساحلية وتأكد من توفر مصدات الرياح الطبيعية. تجنب المناطق المعرضة للفيضانات البحرية.</p>
             </div>
             
             <div class="tips">
                 <h3>تحضير التربة</h3>
-                <p>أضف المواد العضوية لتحسين خصوبة التربة وتهويتها قبل الزراعة.</p>
+                <p>أضف المواد العضوية والرمل لتحسين تصريف التربة. يمكن إضافة الكومبوست لزيادة الخصوبة.</p>
             </div>
             
             <div class="tips">
                 <h3>الري المنظم</h3>
-                <p>وفر نظام ري منتظم خاصة في الأشهر الأولى بعد الزراعة لضمان نجاحها.</p>
+                <p>وفر نظام ري منتظم خاصة في الأشهر الأولى بعد الزراعة. استخدم مياه منخفضة الملوحة للري.</p>
             </div>
             
             <div class="tips">
                 <h3>الحماية من الرياح</h3>
-                <p>استخدم حواجز مؤقتة لحماية الشتلات الصغيرة من الرياح القوية.</p>
+                <p>استخدم حواجز مؤقتة من الخيش أو البلاستيك لحماية الشتلات الصغيرة من الرياح القوية.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>التسميد المناسب</h3>
+                <p>استخدم الأسمدة العضوية والمعدنية المناسبة للتربة الساحلية. تجنب الإفراط في التسميد.</p>
             </div>
         </section>
         
