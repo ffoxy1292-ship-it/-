@@ -1,1 +1,375 @@
-
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حملة تشجير السواحل الجزائرية</title>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --pale-green: #e8f5e9;
+            --dark-green: #1b5e20;
+            --accent-color: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--dark-green), var(--primary-green));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            background-color: var(--pale-green);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h2 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--light-green);
+        }
+        
+        .section h2 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--pale-green);
+        }
+        
+        .tree-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tree-card {
+            background-color: var(--pale-green);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tree-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .tree-image {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-weight: bold;
+        }
+        
+        .tree-info {
+            padding: 1.5rem;
+        }
+        
+        .tree-info h3 {
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tree-info p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .benefits-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            color: var(--light-green);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+        
+        .tips {
+            background-color: #fff8e1;
+            border-left: 5px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+        
+        .tips h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .cta {
+            background: linear-gradient(to right, var(--primary-green), var(--light-green));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-green);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tree-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>حملة تشجير السواحل الجزائرية</h1>
+            <p>معًا نحو سواحل خضراء مستدامة لحماية بيئتنا وزيادة جمالها</p>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>أنسب الأشجار للتربة الساحلية في الجزائر</h2>
+            <p>اكتشف معنا أفضل أنواع الأشجار التي تتناسب مع التربة الساحلية في الجزائر وتتحمل الظروف المناخية القاسية</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="section">
+            <h2>أهمية التشجير في المناطق الساحلية</h2>
+            <p>تشجير المناطق الساحلية في الجزائر له فوائد متعددة تشمل:</p>
+            <ul class="benefits-list">
+                <li>حماية التربة من الانجراف والتآكل</li>
+                <li>تثبيت الكثبان الرملية ومنع زحفها</li>
+                <li>تحسين جودة الهواء وامتصاص ثاني أكسيد الكربون</li>
+                <li>توفير موائل طبيعية للطيور والكائنات الحية</li>
+                <li>تحسين المناظر الطبيعية وجذب السياحة</li>
+                <li>تخفيف حدة الرياح والعواصف الرملية</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>أفضل الأشجار للتربة الساحلية الجزائرية</h2>
+            <p>اخترنا لكم مجموعة من الأشجار المناسبة للبيئة الساحلية في الجزائر بناءً على قدرتها على تحمل الملوحة والرياح القوية:</p>
+            
+            <div class="tree-grid">
+                <div class="tree-card">
+                    <div class="tree-image">صورة شجرة الكينا</div>
+                    <div class="tree-info">
+                        <h3>شجرة الكينا (الأوكالبتوس)</h3>
+                        <p>شجرة سريعة النمو تتحمل الملوحة والجفاف، وتصلح للزراعة في المناطق الساحلية.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الملوحة العالية</li>
+                            <li>نمو سريع</li>
+                            <li>توفير ظل كثيف</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">صورة شجرة الصنوبر الحلبي</div>
+                    <div class="tree-info">
+                        <h3>شجرة الصنوبر الحلبي</h3>
+                        <p>شجرة دائمة الخضرة تتحمل الجفاف والملوحة، وتنمو جيدًا في التربة الساحلية.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الجفاف والملوحة</li>
+                            <li>دائمة الخضرة</li>
+                            <li>جذور عميقة تثبت التربة</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">صورة شجرة النخيل</div>
+                    <div class="tree-info">
+                        <h3>شجرة النخيل</h3>
+                        <p>تعتبر من أفضل الأشجار للمناطق الساحلية لقدرتها العالية على تحمل الملوحة والرياح.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الملوحة العالية</li>
+                            <li>مقاومة للرياح القوية</li>
+                            <li>إنتاج التمور</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">صورة شجرة الأكاسيا</div>
+                    <div class="tree-info">
+                        <h3>شجرة الأكاسيا</h3>
+                        <p>شجرة متوسطة الحجم تتحمل الجفاف والملوحة، وتزهر بأزهار صفراء جميلة.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الجفاف والملوحة</li>
+                            <li>أزهار جميلة</li>
+                            <li>تثبيت النيتروجين في التربة</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">صورة شجرة التمرحنة</div>
+                    <div class="tree-info">
+                        <h3>شجرة التمرحنة</h3>
+                        <p>شجرة ساحلية بامتياز، تتحمل الملوحة والرياح القوية، وتوفر ظلاً ممتازاً.</p>
+                        <ul class="benefits-list">
+                            <li>مقاومة عالية للملوحة</li>
+                            <li>تتحمل الرياح القوية</li>
+                            <li>ظل كثيف</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">صورة شجرة السرو</div>
+                    <div class="tree-info">
+                        <h3>شجرة السرو</h3>
+                        <p>شجرة دائمة الخضرة تتحمل الرياح القوية، وتصلح كحواجز رياح في المناطق الساحلية.</p>
+                        <ul class="benefits-list">
+                            <li>مقاومة للرياح</li>
+                            <li>دائمة الخضرة</li>
+                            <li>مناسبة كحواجز رياح</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>نصائح للزراعة الناجحة</h2>
+            
+            <div class="tips">
+                <h3>اختيار الموقع المناسب</h3>
+                <p>اختر مواقع بعيدة عن المنشآت الساحلية وتأكد من توفر مصدات الرياح الطبيعية.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>تحضير التربة</h3>
+                <p>أضف المواد العضوية لتحسين خصوبة التربة وتهويتها قبل الزراعة.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>الري المنظم</h3>
+                <p>وفر نظام ري منتظم خاصة في الأشهر الأولى بعد الزراعة لضمان نجاحها.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>الحماية من الرياح</h3>
+                <p>استخدم حواجز مؤقتة لحماية الشتلات الصغيرة من الرياح القوية.</p>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <h2>انضم إلى حملتنا للتشجير</h2>
+            <p>سجل معنا وساهم في جعل سواحل الجزائر أكثر خضرة وجمالاً</p>
+            <a href="#" class="btn">سجل كمتطوع</a>
+            <a href="#" class="btn">تبرع لزراعة شجرة</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>حملة تشجير السواحل الجزائرية - معًا نحو بيئة أفضل</p>
+            <p>© 2023 جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+</body>
+</html>
