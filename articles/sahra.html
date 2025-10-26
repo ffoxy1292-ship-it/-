@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حملة تشجير المناطق الصحراوية في الجزائر</title>
+    <style>
+        :root {
+            --primary-green: #388e3c;
+            --light-green: #4caf50;
+            --pale-green: #e8f5e9;
+            --dark-green: #1b5e20;
+            --sand-color: #d7ccc8;
+            --dark-sand: #a1887f;
+            --accent-color: #ff9800;
+            --desert-brown: #8d6e63;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #fefefe;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, #fffde7, #f5f5f5);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--desert-brown), var(--dark-sand), var(--primary-green));
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,30 Q50,10 70,30 T90,50 T70,70 T50,90 T30,70 T10,50 T30,30 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--sand-color) 0%, var(--pale-green) 100%);
+            padding: 3.5rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23d7ccc8"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23d7ccc8"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23d7ccc8"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero h2 {
+            color: var(--dark-green);
+            margin-bottom: 1.2rem;
+            font-size: 2.3rem;
+        }
+        
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.2rem;
+            color: #5d4037;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--light-green);
+            position: relative;
+        }
+        
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--pale-green) 0%, transparent 70%);
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .section h2 {
+            color: var(--desert-brown);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px dotted var(--sand-color);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        
+        .challenge-card {
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-right: 4px solid var(--accent-color);
+            transition: transform 0.3s;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .challenge-card h3 {
+            color: var(--desert-brown);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .challenge-card h3::before {
+            content: "🌵";
+            margin-left: 0.5rem;
+        }
+        
+        .tree-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .tree-card {
+            background: linear-gradient(to bottom, white, var(--pale-green));
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .tree-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--sand-color), var(--light-green));
+        }
+        
+        .tree-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .tree-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--sand-color), var(--dark-sand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5d4037;
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tree-image::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
+        }
+        
+        .tree-info {
+            padding: 1.8rem;
+        }
+        
+        .tree-info h3 {
+            color: var(--dark-green);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .tree-info p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .benefits-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-right: 1.8rem;
+            color: #5d4037;
+        }
+        
+        .benefits-list li:before {
+            content: "✔";
+            color: var(--light-green);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+            font-size: 1.1rem;
+        }
+        
+        .tips {
+            background: linear-gradient(135deg, #fff3e0, #fff8e1);
+            border-right: 5px solid var(--accent-color);
+            padding: 1.8rem;
+            border-radius: 8px;
+            margin: 1.8rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tips h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tips h3::before {
+            content: "💡";
+            margin-left: 0.5rem;
+        }
+        
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--sand-color);
+        }
+        
+        .story-card h4 {
+            color: var(--desert-brown);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--desert-brown), var(--dark-green));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 6s infinite linear;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--dark-green);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.7rem;
+            transition: all 0.4s;
+            border: 2px solid white;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--desert-brown), var(--dark-sand));
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tree-grid, .challenges-grid, .success-stories {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>حملة تشجير المناطق الصحراوية في الجزائر</h1>
+            <p>معًا نحو صحراء خضراء مستدامة لمكافحة التصحر وبناء مستقبل أفضل</p>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>أنسب الأشجار للبيئة الصحراوية في الجزائر</h2>
+            <p>اكتشف معنا أفضل أنواع الأشجار التي تتحمل الظروف القاسية في الصحراء الجزائرية وتساهم في مكافحة التصحر</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="section">
+            <h2>التحديات في المناطق الصحراوية</h2>
+            <p>تشجير المناطق الصحراوية في الجزائر يواجه تحديات كبيرة تتطلب أشجارًا متكيفة بشكل خاص:</p>
+            
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <h3>نقص المياه</h3>
+                    <p>انخفاض معدلات هطول الأمطار وندرة مصادر المياه العذبة</p>
+                </div>
+                
+                <div class="challenge-card">
+                    <h3>الملوحة العالية</h3>
+                    <p>ارتفاع ملوحة التربة والمياه في العديد من المناطق الصحراوية</p>
+                </div>
+                
+                <div class="challenge-card">
+                    <h3>الرياح والعواصف</h3>
+                    <p>الرياح القوية والعواصف الرملية التي تؤثر على نمو الأشجار</p>
+                </div>
+                
+                <div class="challenge-card">
+                    <h3>التباين الحراري</h3>
+                    <p>تفاوت كبير في درجات الحرارة بين النهار والليل</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>أفضل الأشجار للبيئة الصحراوية</h2>
+            <p>اخترنا لكم مجموعة من الأشجار المتكيفة مع البيئة الصحراوية في الجزائر بناءً على قدرتها على تحمل الجفاف والملوحة:</p>
+            
+            <div class="tree-grid">
+                <div class="tree-card">
+                    <div class="tree-image">شجرة النخيل</div>
+                    <div class="tree-info">
+                        <h3>شجرة النخيل</h3>
+                        <p>شجرة معمرة تتحمل الجفاف والحرارة العالية، تنتج التمور وتوفر ظلاً واسعاً.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الجفاف الشديد</li>
+                            <li>مقاومة للملوحة</li>
+                            <li>إنتاج التمور</li>
+                            <li>ظل واسع وكثيف</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">شجرة الأكاسيا</div>
+                    <div class="tree-info">
+                        <h3>شجرة الأكاسيا</h3>
+                        <p>شجرة متوسطة الحجم، تتحمل الجفاف والملوحة، جذورها عميقة تصل إلى المياه الجوفية.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الجفاف والملوحة</li>
+                            <li>جذور عميقة</li>
+                            <li>تثبيت النيتروجين في التربة</li>
+                            <li>مصدر للعلف الحيواني</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">شجرة الطلح</div>
+                    <div class="tree-info">
+                        <h3>شجرة الطلح</h3>
+                        <p>شجرة صحراوية معمرة، تتحمل الظروف القاسية، أوراقها صغيرة لتقليل فقدان الماء.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الجفاف الشديد</li>
+                            <li>مناسبة للرعي</li>
+                            <li>تثبيت الكثبان الرملية</li>
+                            <li>مقاومة للرياح</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">شجرة الآرغان</div>
+                    <div class="tree-info">
+                        <h3>شجرة الآرغان</h3>
+                        <p>شجرة متوسطة الحجم، تتحمل الجفاف، تنتج زيت الأرغان الثمين.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الجفاف</li>
+                            <li>إنتاج زيت الأرغان</li>
+                            <li>جذور عميقة</li>
+                            <li>مقاومة للرياح</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">شجرة الغاف</div>
+                    <div class="tree-info">
+                        <h3>شجرة الغاف</h3>
+                        <p>شجرة سريعة النمو، تتحمل الملوحة والجفاف، وتوفر ظلاً ممتازاً.</p>
+                        <ul class="benefits-list">
+                            <li>نمو سريع</li>
+                            <li>تتحمل الملوحة العالية</li>
+                            <li>ظل كثيف</li>
+                            <li>مصدر للعلف</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tree-card">
+                    <div class="tree-image">شجرة السدر</div>
+                    <div class="tree-info">
+                        <h3>شجرة السدر (النبق)</h3>
+                        <p>شجرة متوسطة الحجم، تتحمل الجفاف، تنتج ثمار النبق المغذية.</p>
+                        <ul class="benefits-list">
+                            <li>تتحمل الجفاف</li>
+                            <li>إنتاج ثمار النبق</li>
+                            <li>أوراقها مغذية للحيوانات</li>
+                            <li>مقاومة للرياح</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>نصائح للزراعة الناجحة في الصحراء</h2>
+            
+            <div class="tips">
+                <h3>اختيار الأصناف المناسبة</h3>
+                <p>اختر الأشجار المتكيفة مع الظروف الصحراوية والقادرة على تحمل الجفاف والملوحة.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>تقنيات الري الفعالة</h3>
+                <p>استخدم أنظمة الري بالتنقيط لتوفير المياه وتوجيهها مباشرة إلى جذور الأشجار.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>حماية الشتلات الصغيرة</h3>
+                <p>استخدم حواجز لحماية الشتلات من الرياح والعواصف الرملية في مراحل النمو الأولى.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>تحسين التربة</h3>
+                <p>أضف المواد العضوية والمحسّنات لتحسين خصوبة التربة الصحراوية.</p>
+            </div>
+            
+            <div class="tips">
+                <h3>الزراعة في المواسم المناسبة</h3>
+                <p>اختر فصلي الخريف والربيع للزراعة عندما تكون الظروف الجوية أكثر ملاءمة.</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>قصص نجاح في تشجير الصحراء</h2>
+            
+            <div class="success-stories">
+                <div class="story-card">
+                    <h4>مشروع واحة أدرار</h4>
+                    <p>تحويل مساحات شاسعة من الأراضي الصحراوية إلى واحات خضراء باستخدام أشجار النخيل والأكاسيا.</p>
+                </div>
+                
+                <div class="story-card">
+                    <h4>مشروع السور الأخضر</h4>
+                    <p>زراعة ملايين الأشجار لمكافحة التصحر وزحف الرمال في المناطق الجنوبية.</p>
+                </div>
+                
+                <div class="story-card">
+                    <h4>مشروع واحات تمنراست</h4>
+                    <p>إحياء الزراعة في الواحات التقليدية باستخدام تقنيات الري الحديثة.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <h2>انضم إلى حملتنا لتشجير الصحراء الجزائرية</h2>
+            <p>سجل معنا وساهم في جعل الصحراء الجزائرية أكثر خضرة وخصوبة لمكافحة التصحر</p>
+            <a href="#" class="btn">سجل كمتطوع</a>
+            <a href="#" class="btn">تبرع لزراعة شجرة</a>
+            <a href="#" class="btn">ادعم مشاريع التشجير</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>حملة تشجير المناطق الصحراوية في الجزائر - معًا نحو صحراء خضراء مستدامة</p>
+            <p>© 2023 جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+</body>
+  </html>
