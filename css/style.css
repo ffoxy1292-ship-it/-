@@ -24,116 +24,141 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+.conteudo__geral {
     flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 40px 20px;
 }
 
-h1 {
-    font-size: 2.8em;
-    margin-bottom: 60px;
+.container {
     text-align: center;
-    color: var(--dark);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1000px;
-}
-
-.region-card {
-    background: linear-gradient(135deg, white 0%, var(--light) 100%);
-    border-radius: 15px;
-    text-decoration: none;
-    color: var(--dark);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
-    border: 2px solid transparent;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.region-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--primary), var(--primary-light));
-}
-
-.region-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    border-color: var(--primary-light);
-}
-
-.card-content {
-    text-align: center;
-    padding: 20px;
-    z-index: 2;
-}
-
-.region-card h2 {
-    font-size: 2em;
+.main-title {
+    font-size: 3em;
     margin-bottom: 10px;
     color: var(--dark);
 }
 
-.region-card p {
+.subtitle {
+    font-size: 1.3em;
+    margin-bottom: 50px;
+    color: #666;
+}
+
+/* الكاروسيل الدائري */
+.container-carrossel {
+    perspective: 1000px;
+    height: 400px;
+    position: relative;
+    margin: 60px auto;
+}
+
+.carrossel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.carrossel-item {
+    position: absolute;
+    width: 280px;
+    height: 320px;
+    background: linear-gradient(135deg, white 0%, var(--light) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--dark);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    transform-origin: center center;
+}
+
+.carrossel-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border-color: var(--primary-light);
+}
+
+.item-content {
+    text-align: center;
+    padding: 30px;
+}
+
+.icon {
+    font-size: 4em;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.carrossel-item h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.carrossel-item p {
     font-size: 1.1em;
     color: #666;
     margin: 0;
 }
 
-
-.region-card:nth-child(1) {
+/* تحديد مواقع العناصر في الدائرة */
+.carrossel-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(400px);
     background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
 }
 
-.region-card:nth-child(2) {
+.carrossel-item:nth-child(2) {
+    transform: rotateY(120deg) translateZ(400px);
     background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
 }
 
-.region-card:nth-child(3) {
+.carrossel-item:nth-child(3) {
+    transform: rotateY(240deg) translateZ(400px);
     background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);
 }
 
-.region-card:nth-child(1):hover {
-    background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%);
+/* أزرار التحكم */
+.controls {
+    margin-top: 40px;
 }
 
-.region-card:nth-child(2):hover {
-    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+.prev-btn, .next-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2em;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.region-card:nth-child(3):hover {
-    background: linear-gradient(135deg, #ffcc80 0%, #ffb74d 100%);
+.prev-btn:hover, .next-btn:hover {
+    background: var(--primary-light);
+    transform: scale(1.1);
 }
 
-
+/* الفوتر */
 footer {
     background: linear-gradient(135deg, var(--dark), var(--primary));
     color: white;
     text-align: center;
     padding: 30px 20px;
     margin-top: auto;
-    width: 100%;
 }
 
 .footer-container {
@@ -141,55 +166,63 @@ footer {
     margin: 0 auto;
 }
 
-footer p {
-    margin: 5px 0;
-    font-size: 1em;
-}
-
-footer p:first-child {
-    font-size: 1.1em;
-    font-weight: 500;
-}
-
-
+/* التصميم المتجاوب */
 @media (max-width: 768px) {
-    .container {
-        padding: 30px 15px;
+    .container-carrossel {
+        height: 300px;
+        perspective: 800px;
     }
     
-    h1 {
+    .carrossel-item {
+        width: 220px;
+        height: 260px;
+    }
+    
+    .carrossel-item:nth-child(1) {
+        transform: rotateY(0deg) translateZ(300px);
+    }
+    
+    .carrossel-item:nth-child(2) {
+        transform: rotateY(120deg) translateZ(300px);
+    }
+    
+    .carrossel-item:nth-child(3) {
+        transform: rotateY(240deg) translateZ(300px);
+    }
+    
+    .main-title {
         font-size: 2.2em;
-        margin-bottom: 40px;
-    }
-    
-    .articles-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .region-card {
-        height: 150px;
-    }
-    
-    .region-card h2 {
-        font-size: 1.7em;
-    }
-    
-    .region-card p {
-        font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.8em;
+    .container-carrossel {
+        height: 250px;
+        perspective: 600px;
     }
     
-    .region-card {
-        height: 130px;
+    .carrossel-item {
+        width: 180px;
+        height: 220px;
     }
     
-    .region-card h2 {
-        font-size: 1.5em;
+    .carrossel-item:nth-child(1) {
+        transform: rotateY(0deg) translateZ(250px);
     }
-  }
+    
+    .carrossel-item:nth-child(2) {
+        transform: rotateY(120deg) translateZ(250px);
+    }
+    
+    .carrossel-item:nth-child(3) {
+        transform: rotateY(240deg) translateZ(250px);
+    }
+    
+    .icon {
+        font-size: 3em;
+    }
+    
+    .carrossel-item h3 {
+        font-size: 1.4em;
+    }
+}
