@@ -2,107 +2,167 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مرحباً</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
             overflow: hidden;
+            font-family: 'Arial', sans-serif;
         }
 
-        .flower {
-            position: relative;
-            animation: bloom 1.5s ease-out;
+        /* الخلفية السينمائية */
+        .cinematic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a3d0a, #1a5f1a, #2d8b2d);
+            opacity: 0;
+            animation: fadeInBG 3s ease-in-out forwards;
         }
 
-        .petal {
+        /* النجوم */
+        .stars {
             position: absolute;
-            width: 60px;
-            height: 100px;
-            background: linear-gradient(to bottom, #ff6b6b, #ff8e8e);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            transform-origin: bottom center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
-        .petal:nth-child(1) { transform: rotate(0deg) translateY(-40px); }
-        .petal:nth-child(2) { transform: rotate(45deg) translateY(-40px); }
-        .petal:nth-child(3) { transform: rotate(90deg) translateY(-40px); }
-        .petal:nth-child(4) { transform: rotate(135deg) translateY(-40px); }
-        .petal:nth-child(5) { transform: rotate(180deg) translateY(-40px); }
-        .petal:nth-child(6) { transform: rotate(225deg) translateY(-40px); }
-        .petal:nth-child(7) { transform: rotate(270deg) translateY(-40px); }
-        .petal:nth-child(8) { transform: rotate(315deg) translateY(-40px); }
-
-        .center {
+        .star {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, #ffd700, #ffa500);
+            background: white;
             border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        /* الزهرة السينمائية */
+        .magic-flower {
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 10;
+            font-size: 8em;
+            opacity: 0;
+            animation: magicBloom 2s ease-in-out 1s forwards;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
         }
 
-        .stem {
-            width: 10px;
-            height: 150px;
-            background: linear-gradient(to bottom, #2d8b2d, #1a5f1a);
-            position: absolute;
-            top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 5px;
-        }
-
-        .welcome-text {
+        /* النص السينمائي */
+        .cinematic-text {
             position: absolute;
             top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
             color: white;
-            font-size: 2em;
-            text-align: center;
-            animation: fadeIn 2s ease-in-out;
+            font-size: 3em;
+            opacity: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: textReveal 2s ease-in-out 2s forwards;
         }
 
-        @keyframes bloom {
-            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        /* تأثيرات الضوء */
+        .light-beam {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.8), transparent);
+            animation: lightSweep 3s ease-in-out 0.5s;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        /* الأنيميشنات */
+        @keyframes fadeInBG {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes magicBloom {
+            0% { 
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+                opacity: 0;
+                filter: blur(20px);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+                opacity: 1;
+                filter: blur(0px) drop-shadow(0 0 30px gold);
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(1) rotate(360deg);
+                opacity: 1;
+                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+            }
+        }
+
+        @keyframes textReveal {
+            0% { 
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px);
+                letter-spacing: 20px;
+            }
+            100% { 
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+                letter-spacing: normal;
+            }
+        }
+
+        @keyframes lightSweep {
+            0% { transform: translateX(-50%) rotate(0deg); opacity: 0; }
+            50% { transform: translateX(-50%) rotate(180deg); opacity: 1; }
+            100% { transform: translateX(-50%) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
-    <div class="flower">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="center"></div>
-        <div class="stem"></div>
-    </div>
+    <div class="cinematic-bg"></div>
     
-    <div class="welcome-text">🌿 خضرة بإذن الله</div>
+    <div class="stars" id="stars"></div>
+    
+    <div class="light-beam"></div>
+    
+    <div class="magic-flower">✨</div>
+    
+    <div class="cinematic-text">🌿 خضرة بإذن الله</div>
 
     <script>
-        // بعد ثانيتين فقط اذهب للصفحة الرئيسية
+        // إنشاء النجوم
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // الانتقال بعد 4 ثواني
         setTimeout(() => {
-            window.location.href = 'main.html';
-        }, 2000);
+            document.body.style.opacity = 0;
+            setTimeout(() => {
+                window.location.href = 'main.html';
+            }, 1000);
+        }, 4000);
     </script>
 </body>
 </html>
