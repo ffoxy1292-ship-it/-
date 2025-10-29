@@ -3,46 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>مرحباً</title>
-    <link rel="stylesheet" href="flower-styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .flower {
+            position: relative;
+            animation: bloom 1.5s ease-out;
+        }
+
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: linear-gradient(to bottom, #ff6b6b, #ff8e8e);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform-origin: bottom center;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg) translateY(-40px); }
+        .petal:nth-child(2) { transform: rotate(45deg) translateY(-40px); }
+        .petal:nth-child(3) { transform: rotate(90deg) translateY(-40px); }
+        .petal:nth-child(4) { transform: rotate(135deg) translateY(-40px); }
+        .petal:nth-child(5) { transform: rotate(180deg) translateY(-40px); }
+        .petal:nth-child(6) { transform: rotate(225deg) translateY(-40px); }
+        .petal:nth-child(7) { transform: rotate(270deg) translateY(-40px); }
+        .petal:nth-child(8) { transform: rotate(315deg) translateY(-40px); }
+
+        .center {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #ffd700, #ffa500);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .stem {
+            width: 10px;
+            height: 150px;
+            background: linear-gradient(to bottom, #2d8b2d, #1a5f1a);
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .welcome-text {
+            position: absolute;
+            top: 70%;
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes bloom {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body class="not-loaded">
-    <!-- كل كود الزهرة هنا -->
-    <div class="night"></div>
-    <div class="flowers">
-      <div class="flower flower--1">
-        <div class="flower__leafs flower__leafs--1">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__white-circle"></div>
-          <div class="flower__light flower__light--1"></div>
-          <div class="flower__light flower__light--2"></div>
-          <div class="flower__light flower__light--3"></div>
-          <div class="flower__light flower__light--4"></div>
-          <div class="flower__light flower__light--5"></div>
-          <div class="flower__light flower__light--6"></div>
-          <div class="flower__light flower__light--7"></div>
-          <div class="flower__light flower__light--8"></div>
-        </div>
-        <div class="flower__line">
-          <div class="flower__line__leaf flower__line__leaf--1"></div>
-          <div class="flower__line__leaf flower__line__leaf--2"></div>
-          <div class="flower__line__leaf flower__line__leaf--3"></div>
-          <div class="flower__line__leaf flower__line__leaf--4"></div>
-          <div class="flower__line__leaf flower__line__leaf--5"></div>
-          <div class="flower__line__leaf flower__line__leaf--6"></div>
-        </div>
-      </div>
-      <!-- إنسخ كل كود الزهرة الثاني هنا -->
+<body>
+    <div class="flower">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+        <div class="stem"></div>
     </div>
     
-    <script src="flower-script.js"></script>
+    <div class="welcome-text">🌿 خضرة بإذن الله</div>
+
     <script>
-        // بعد 3 ثواني اذهب للمشروع الأصلي
+        // بعد ثانيتين فقط اذهب للصفحة الرئيسية
         setTimeout(() => {
             window.location.href = 'main.html';
-        }, 3000);
+        }, 2000);
     </script>
 </body>
 </html>
