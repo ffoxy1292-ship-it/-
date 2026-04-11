@@ -538,23 +538,23 @@
     <footer>
         <div class="container">
             <p>حملة تشجير المناطق الداخلية في الجزائر - معًا نحو بيئة داخلية أفضل</p>
-            <p>© 2023 جميع الحقوق محفوظة</p>
+            <p>© 2026 جميع الحقوق محفوظة</p>
         </div>
     </footer>
 
     <script>
-        // تبويبات المناطق
+        
         document.addEventListener('DOMContentLoaded', function() {
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // إزالة النشاط من جميع الأزهار والمحتويات
+                    
                     tabBtns.forEach(b => b.classList.remove('active'));
                     tabContents.forEach(c => c.classList.remove('active'));
                     
-                    // إضافة النشاط للعناصر المحددة
+                    
                     btn.classList.add('active');
                     const tabId = btn.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
